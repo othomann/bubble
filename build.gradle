@@ -13,18 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import java.text.SimpleDateFormat
 
-apply plugin: 'java'
-apply plugin: 'license'
-apply plugin: 'application'
-
-mainClassName = 'bubble.Main'
 
 buildscript {
     repositories {
-        jcenter()
+        maven { url mavenCentral }
     }
 
     dependencies {
@@ -32,6 +26,15 @@ buildscript {
         classpath 'org.ajoberstar:gradle-git:0.6.3'
     }
 }
+plugins {
+  id "org.sonarqube" version "2.2"
+}
+apply plugin: 'java'
+apply plugin: 'license'
+apply plugin: 'application'
+apply plugin: 'maven'
+
+mainClassName = 'bubble.Main'
 
 sourceSets {
     main {
@@ -56,10 +59,7 @@ configurations {
 }
 
 repositories {
-    jcenter()
-    maven { url 'http://dl.bintray.com/content/aalmiray/kordamp' }
-    mavenCentral()
-    mavenLocal()
+    maven { url mavenCentral }
  }
 
 license {
