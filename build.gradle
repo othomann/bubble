@@ -18,7 +18,13 @@ import java.text.SimpleDateFormat
 
 buildscript {
     repositories {
-        maven { url mavenCentral }
+        maven {
+            url mavenCentral
+            credentials {
+	            username mavenUsername
+	            password mavenPassword
+	        }
+        }
     }
 
     dependencies {
@@ -59,8 +65,14 @@ configurations {
 }
 
 repositories {
-    maven { url mavenCentral }
- }
+	maven {
+        url mavenCentral
+        credentials {
+            username mavenUsername
+            password mavenPassword
+        }
+    }
+}
 
 license {
     header = rootProject.file('licence')
