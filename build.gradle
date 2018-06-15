@@ -19,11 +19,11 @@ import java.text.SimpleDateFormat
 buildscript {
     repositories {
         maven {
-            url mavenCentral
-            credentials {
-	            username mavenUsername
-	            password mavenPassword
-	        }
+		url System.getenv( 'MAVEN_MIRROR_URL' )
+		credentials {
+		    username System.getenv( 'MAVEN_USER_ID' )
+		    password System.getenv( 'MAVEN_TOKEN' )
+		}
         }
     }
 
@@ -48,6 +48,8 @@ sonarqube {
         property "sonar.projectName", "My Simple Gradle Project"
         property "sonar.sourceEncoding", "UTF-8"
         property "sonar.projectVersion", "1.0.0"
+	property "sonar.host.url", System.env('SONAR_SERVER_URL')
+	property "sonar.login", System.env('SONAR_USER_TOKEN')
     }
 }
 
@@ -75,10 +77,10 @@ configurations {
 
 repositories {
 	maven {
-        url mavenCentral
+        url System.getenv( 'MAVEN_MIRROR_URL' )
         credentials {
-            username mavenUsername
-            password mavenPassword
+            username System.getenv( 'MAVEN_USER_ID' )
+            password System.getenv( 'MAVEN_TOKEN' )
         }
     }
 }
