@@ -18,13 +18,7 @@ import java.text.SimpleDateFormat
 
 buildscript {
     repositories {
-        maven {
-		url System.getenv( 'MAVEN_MIRROR_URL' )
-		credentials {
-		    username System.getenv( 'MAVEN_USER_ID' )
-		    password System.getenv( 'MAVEN_TOKEN' )
-		}
-        }
+        maven { url = "http://repo.maven.apache.org/maven2" }
     }
 
     dependencies {
